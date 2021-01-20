@@ -1,2 +1,2 @@
-# CVAE
-用CVAE生成MNIST数字
+# VAE
+用VAE生成MNIST数字

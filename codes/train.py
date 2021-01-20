@@ -22,7 +22,7 @@ from generator import generator
 from encoder import encoder
 from decoder import decoder
 
-class CVAELoss(Loss):
+class VAELoss(Loss):
     def compute_loss(self, inputs):
         z_mean, z_log_var, x, z_decoded = inputs
         x = K.batch_flatten(x)
@@ -57,7 +57,7 @@ if __name__ == '__main__':
         return z_mean + K.exp(z_log_var / 2) * epsilon
     z = Lambda(sample)([z_mean, z_log_var])
     z_decoded = decoder_model(z)
-    z_decoded = CVAELoss(output_axis=-1)([z_mean, z_log_var, train_input, z_decoded])
+    z_decoded = VAELoss(output_axis=-1)([z_mean, z_log_var, train_input, z_decoded])
     train_model = Model(train_input, z_decoded)
     train_model.compile(Adam(learning_rate=1e-4))
 

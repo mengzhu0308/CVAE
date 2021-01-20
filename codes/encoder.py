@@ -12,12 +12,10 @@ def encoder(x, latent_dim=50):
     x = Conv2D(32, 3, padding='same')(x)
     x = ReLU()(x)
 
-    x = Conv2D(64, 4, strides=2, padding='same', use_bias=False)(x)
-    x = BatchNormalization()(x)
+    x = Conv2D(64, 4, strides=2, padding='same')(x)
     x = ReLU()(x)
 
-    x = Conv2D(128, 4, strides=2, padding='same', use_bias=False)(x)
-    x = BatchNormalization()(x)
+    x = Conv2D(128, 4, strides=2, padding='same')(x)
     x = ReLU()(x)
 
     x = Flatten()(x)

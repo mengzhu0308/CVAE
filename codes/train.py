@@ -65,7 +65,7 @@ if __name__ == '__main__':
         random_latent_vector = np.random.normal(size=(1, latent_dim))
         generated_image = decoder_model.predict_on_batch(random_latent_vector)[0]
 
-        img = cv2.resize(np.clip(generated_image * 255, 0, 255).astype('uint8'), dst_img_size)
+        img = cv2.resize(np.round(generated_image * 255).astype('uint8'), dst_img_size)
         cv2.imwrite('generated_image.png', img)
 
     class Evaluator(Callback):
